@@ -1,0 +1,1 @@
+jar cmf Manifest.txt PoissonImageEditing.jar *.class Pictures\*

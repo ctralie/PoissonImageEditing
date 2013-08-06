@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+	<settings>
+		<label>Poisson</label>
+		<root_path>\</root_path>
+		<output_path>classes\</output_path>
+		<source_path>src\</source_path>
+		<jdkprofile_ref>JDK version 1.6.0_26</jdkprofile_ref>
+		<compiler_ref/>
+		<ant_ref/>
+	</settings>
+	<ant_events/>
+	<run_items/>
+	<runtimes>
+		<runtime>
+			<label>&lt;Default&gt;</label>
+			<application_ref/>
+			<applet_ref/>
+			<debugger_ref/>
+			<param/>
+			<run>classes\Poisson.htm</run>
+			<verify>true</verify>
+		</runtime>
+	</runtimes>
+	<libraries/>
+	<files>
+		<include>
+			<folderitem>
+				<path>classes</path>
+			</folderitem>
+			<folderitem>
+				<path>src</path>
+			</folderitem>
+			<fileitem>
+				<path>classes\Poisson.htm</path>
+				<folder>classes</folder>
+				<url>classes\Poisson.htm</url>
+				<browser>true</browser>
+			</fileitem>
+			<fileitem>
+				<path>src\CannyEdgeImage.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\Coord.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\ImageSelector.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\MatrixSolver.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\Poisson.java</path>
+				<folder>src</folder>
+			</fileitem>
+		</include>
+	</files>
+	<tasks/>
+</project>
