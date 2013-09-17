@@ -63,6 +63,16 @@ public class Poisson extends JApplet implements ActionListener, WindowListener,
 	//Index number for area pixels
 	//This function also moves everything over
 	void updateMask() {
+		//Clip the motion to the display window
+		if (xMin + dx < 1)
+			dx = 1 - xMin;
+		if (xMax + dx > Width - 1)
+			dx = Width - 1 - xMax;
+		if (yMin + dy < 1)
+			dy = 1 - yMin;
+		if (yMax + dy > Height - 1)
+			dy = Height - 1 - yMax;
+		//Now update the mask
 		for (int x = 0; x < Width; x++) {
 			for (int y = 0; y < Height; y++)
 				mask[x][y] = -2;
@@ -72,8 +82,6 @@ public class Poisson extends JApplet implements ActionListener, WindowListener,
 			int y = selectionBorder.get(i).y + dy;
 			selectionBorder.get(i).x = x;
 			selectionBorder.get(i).y = y;
-			if (x < 0 || x >= Width || y < 0 || y >= Height)
-				continue;
 			mask[x][y] = -1;
 		}
 		for (int i = 0; i < selectionArea.size(); i++) {
@@ -81,15 +89,13 @@ public class Poisson extends JApplet implements ActionListener, WindowListener,
 			int y = selectionArea.get(i).y + dy;
 			selectionArea.get(i).x = x;
 			selectionArea.get(i).y = y;
-			if (x < 0 || x >= Width || y < 0 || y >= Height)
-				continue;
 			mask[x][y] = i;
 		}
 		xMin += dx; xMax += dx;
 		yMin += dy; yMax += dy;
 		dx = 0;
 		dy = 0;
-	}	
+	}
 	
 	public void init() {
 		mask = new int[Width][Height];

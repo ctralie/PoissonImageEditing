@@ -27,13 +27,13 @@
 			<path>src\PoissonStandalone.java</path>
 			<source>true</source>
 			<index>1</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 		<docitem>
 			<path>src\MatrixSolver.java</path>
 			<source>true</source>
 			<index>2</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 		<docitem>
 			<path>src\CannyEdgeImage.java</path>

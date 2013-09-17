@@ -64,8 +64,18 @@ public class PoissonStandalone extends JFrame implements ActionListener, WindowL
 	//-2 for uninvolved pixels
 	//-1 for border pixels
 	//Index number for area pixels
-	//This function also moves everything over
+	//This function also moves everything over by (dx, dy)
 	void updateMask() {
+		//Clip the motion to the display window
+		if (xMin + dx < 1)
+			dx = 1 - xMin;
+		if (xMax + dx > Width - 1)
+			dx = Width - 1 - xMax;
+		if (yMin + dy < 1)
+			dy = 1 - yMin;
+		if (yMax + dy > Height - 1)
+			dy = Height - 1 - yMax;
+		//Now update the mask
 		for (int x = 0; x < Width; x++) {
 			for (int y = 0; y < Height; y++)
 				mask[x][y] = -2;
@@ -75,8 +85,6 @@ public class PoissonStandalone extends JFrame implements ActionListener, WindowL
 			int y = selectionBorder.get(i).y + dy;
 			selectionBorder.get(i).x = x;
 			selectionBorder.get(i).y = y;
-			if (x < 0 || x >= Width || y < 0 || y >= Height)
-				continue;
 			mask[x][y] = -1;
 		}
 		for (int i = 0; i < selectionArea.size(); i++) {
@@ -84,8 +92,6 @@ public class PoissonStandalone extends JFrame implements ActionListener, WindowL
 			int y = selectionArea.get(i).y + dy;
 			selectionArea.get(i).x = x;
 			selectionArea.get(i).y = y;
-			if (x < 0 || x >= Width || y < 0 || y >= Height)
-				continue;
 			mask[x][y] = i;
 		}
 		xMin += dx; xMax += dx;
@@ -440,6 +446,7 @@ public class PoissonStandalone extends JFrame implements ActionListener, WindowL
 			}
 			while (error > 1.0 && state == BLENDING);
 			finalizeBlending();
+			System.out.println("Did " + iteration + "iterations");
 		}
 	}
 	

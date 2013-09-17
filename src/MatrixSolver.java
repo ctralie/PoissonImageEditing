@@ -54,6 +54,7 @@ public class MatrixSolver {
     		int y = selectionArea.get(i).y;
     		int selX = x - xMin;
     		int selY = y - yMin;
+    		
     		int RGB = selectedImage.getRGB(selX, selY);
     		int pValueR = (RGB & 0xFF0000) >> 16;
     		int pValueG = (RGB & 0xFF00) >> 8;
@@ -67,7 +68,7 @@ public class MatrixSolver {
     			int x2 = x + dP[k][0];
     			int y2 = y + dP[k][1];
     			R[i][k] = -1;
-    			if (x2 < 0 || x2 >=Width || y2 < 0 || y2 >= Height)
+    			if (x2 < 1 || x2 >=Width-1 || y2 < 1 || y2 >= Height-1)
     				continue;
     			Np++;
     			int index = mask[x2][y2];
